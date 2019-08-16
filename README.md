@@ -1,7 +1,9 @@
 # Short Url
 
 ## Config PostgreSQL
-bd: shorturl <br>
+
+Criar uma base de dados com: <br>
+database: shorturl <br>
 usuario: shorturl <br>
 senha: shorturl
 
