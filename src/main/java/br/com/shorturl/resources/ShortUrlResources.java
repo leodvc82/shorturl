@@ -35,7 +35,7 @@ public class ShortUrlResources {
 	}
 	
 	@RequestMapping(method =  RequestMethod.POST)
-	public ResponseEntity<Void> addShortUrl(@Valid @RequestBody ShortUrl shortUrl) {
+	public ResponseEntity<Void> create(@Valid @RequestBody ShortUrl shortUrl) {
 		shortUrl = shortUrlService.create(shortUrl);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 					.path("/{urlModified}").buildAndExpand(shortUrl.getUrlModified()).toUri();

@@ -44,7 +44,7 @@ public class ShortUrlServices {
 		
 	}
 	
-	public ShortUrl search(String urlOriginal) {
+	public ShortUrl findByUrlOriginal(String urlOriginal) {
 		Optional<ShortUrl> op = shortUrlRepository.findByUrlOriginal(urlOriginal);
 		if(op.isPresent()) {
 			return op.get();
