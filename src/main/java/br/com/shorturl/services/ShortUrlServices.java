@@ -26,7 +26,7 @@ public class ShortUrlServices {
 		return shortUrlRepository.findAll();
 	}
 	
-	public ShortUrl salvar(ShortUrl shortUrl) {
+	public ShortUrl create(ShortUrl shortUrl) {
 		
 		if (URLValidator.urlValidator(shortUrl.getUrlOriginal())==false) {
 			throw new ShortUrlInvalidException("Url inválida, ex. http://google.com.br ou https://google.com.br");
@@ -44,7 +44,7 @@ public class ShortUrlServices {
 		
 	}
 	
-	public ShortUrl buscar(String urlOriginal) {
+	public ShortUrl search(String urlOriginal) {
 		Optional<ShortUrl> op = shortUrlRepository.findByUrlOriginal(urlOriginal);
 		if(op.isPresent()) {
 			return op.get();

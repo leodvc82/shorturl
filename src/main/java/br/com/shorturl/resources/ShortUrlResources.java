@@ -30,20 +30,20 @@ public class ShortUrlResources {
 	private ShortUrlServices shortUrlService;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<ShortUrl>> listar() {
+	public ResponseEntity<List<ShortUrl>> findAll() {
 		return ResponseEntity.status(HttpStatus.OK).body(shortUrlService.listar());
 	}
 	
 	@RequestMapping(method =  RequestMethod.POST)
-	public ResponseEntity<Void> gerarShortUrl(@Valid @RequestBody ShortUrl shortUrl) {
-		shortUrl = shortUrlService.salvar(shortUrl);
+	public ResponseEntity<Void> addShortUrl(@Valid @RequestBody ShortUrl shortUrl) {
+		shortUrl = shortUrlService.create(shortUrl);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 					.path("/{urlModified}").buildAndExpand(shortUrl.getUrlModified()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	
 	@RequestMapping(value = "/{url}/statistic", method = RequestMethod.GET)
-	public ResponseEntity<ShortUrl> adicionarComentario(@PathVariable("url") String url) {
+	public ResponseEntity<ShortUrl> openStatistics(@PathVariable("url") String url) {
 		ShortUrl shortUrl = shortUrlService.findUrlModified(url);
 		return ResponseEntity.status(HttpStatus.OK).body(shortUrl);
 	}
